@@ -1,0 +1,6 @@
+127.0.0.1 - - [30/Jun/2026:09:01:12 +0000] "GET /api/health HTTP/1.1" 200 42 "-" "kube-probe/1.29"
+10.0.4.18 - - [30/Jun/2026:09:02:05 +0000] "POST /api/checkout HTTP/1.1" 500 128 "-" "Mozilla/5.0"
+10.0.4.22 - - [30/Jun/2026:09:02:18 +0000] "POST /api/checkout HTTP/1.1" 500 128 "-" "Mozilla/5.0"
+10.0.4.19 - - [30/Jun/2026:09:03:31 +0000] "POST /api/checkout HTTP/1.1" 504 0 "-" "Mozilla/5.0"
+10.0.4.20 - - [30/Jun/2026:09:04:10 +0000] "POST /api/checkout HTTP/1.1" 500 128 "-" "Mozilla/5.0"
+10.0.4.21 - - [30/Jun/2026:09:05:40 +0000] "GET /api/orders/88317 HTTP/1.1" 502 0 "-" "Mozilla/5.0"

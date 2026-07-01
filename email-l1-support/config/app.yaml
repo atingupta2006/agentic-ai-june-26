@@ -1,0 +1,138 @@
+# Main application config. Behaviour is controlled here, in prompts.yaml and
+# in graph.yaml.
+
+app:
+  name: "Email L1 Support Agent"
+  version: "1.0.0"
+
+secrets:
+  # Path to the .env file holding API keys ("~" expands to the home dir).
+  # A project-local ./dev.env is used as a fallback if this is missing.
+  env_file: "~/dev.env"
+
+server:
+  host: "127.0.0.1"
+  port: 8080
+  # Max upload size (MB) for attachments sent to the REST API.
+  max_upload_mb: 25
+  # Max tickets per /support/batch call.
+  max_batch_size: 20
+
+llm:
+  provider: "openai"
+  model: "gpt-4o-mini"
+  temperature: 0.0
+  # Vision-capable model used to read screenshots / image attachments.
+  vision_model: "gpt-4o-mini"
+  request_timeout_seconds: 60
+
+embeddings:
+  provider: "openai"
+  # KB articles — smaller, cheaper model is enough for documentation.
+  model: "text-embedding-3-small"
+  # Log / error excerpts — larger model for stack traces and noisy lines.
+  log_model: "text-embedding-3-large"
+
+vectorstore:
+  provider: "chroma"
+  # KB index location (rebuilt by scripts/build_kb.py).
+  persist_directory: "storage/chroma"
+  collection_name: "kb_issues"
+
+knowledge_base:
+  source_directory: "knowledge_base"
+  chunk_size: 800
+  chunk_overlap: 120
+  # Number of KB matches to retrieve per request.
+  top_k: 4
+
+logs:
+  # Above this size, logs are pre-filtered and chunked for retrieval instead of
+  # being sent to the model in full.
+  large_log_threshold_chars: 6000
+  # Pre-filter: keep only lines matching these patterns.
+  interesting_patterns:
+    - "(?i)error"
+    - "(?i)exception"
+    - "(?i)traceback"
+    - "(?i)fatal"
+    - "(?i)critical"
+    - "(?i)timeout"
+    - "(?i)refused"
+    - "(?i)failed"
+    - "(?i)warn"
+  chunk_size: 1200
+  chunk_overlap: 150
+  # Number of relevant log chunks to keep after retrieval.
+  top_k: 6
+  # Per-format chunking and embedding profile (kb | log).
+  formats:
+    generic:
+      chunker: recursive
+      embedding_profile: log
+    java_spring:
+      chunker: recursive
+      chunk_size: 1000
+      chunk_overlap: 120
+      embedding_profile: log
+    apache_access:
+      chunker: line
+      lines_per_chunk: 60
+      line_overlap: 8
+      embedding_profile: log
+    apache_error:
+      chunker: line
+      lines_per_chunk: 40
+      line_overlap: 6
+      embedding_profile: log
+    nginx_access:
+      chunker: line
+      lines_per_chunk: 60
+      line_overlap: 8
+      embedding_profile: log
+    nginx_error:
+      chunker: line
+      lines_per_chunk: 40
+      line_overlap: 6
+      embedding_profile: log
+    json_lines:
+      chunker: line
+      lines_per_chunk: 50
+      line_overlap: 5
+      embedding_profile: log
+    json_array:
+      chunker: recursive
+      chunk_size: 900
+      embedding_profile: log
+    csv:
+      chunker: line
+      lines_per_chunk: 80
+      line_overlap: 10
+      embedding_profile: kb
+
+web_search:
+  enabled: true
+  provider: "serpapi"   # uses SERPAPI_API_KEY
+  num_results: 4
+
+guardrails:
+  # Escalate if the answer is grounded below this score (GroundingCheck validator).
+  min_grounding_score: 0.6
+  # Minimum supporting references required to auto-answer.
+  min_references: 1
+  # Optional Hub PII redaction on drafts (requires: guardrails configure + hub install).
+  hub_pii_enabled: false
+  hub_pii_on_fail: fix
+  # Topics that are always escalated, never auto-resolved.
+  always_escalate_keywords:
+    - "data loss"
+    - "security breach"
+    - "ransomware"
+    - "production outage"
+
+mcp:
+  # Local stdio MCP server queried during triage. If disabled or unavailable,
+  # the pipeline continues without it.
+  enabled: true
+  server_script: "mcp_server/kb_server.py"
+  tool_name: "lookup_ticket_status"

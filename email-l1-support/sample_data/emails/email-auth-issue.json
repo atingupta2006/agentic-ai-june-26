@@ -1,0 +1,5 @@
+{
+  "subject": "Users logged out every 15 minutes after deploy",
+  "body": "Hi,\n\nSince yesterday's release, customers report being kicked out roughly every 15 minutes. Our auth service log is attached.\n\nRegards,\nSam",
+  "attachments": ["../logs/app-auth.log"]
+}

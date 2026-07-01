@@ -1,0 +1,3 @@
+2026/06/30 09:02:18 [error] 2940#2940: *8831 connect() failed (111: Connection refused) while connecting to upstream, client: 10.0.4.18, server: checkout.example.com, request: "POST /api/checkout HTTP/1.1", upstream: "http://127.0.0.1:8080/api/checkout"
+2026/06/30 09:04:10 [error] 2940#2940: *8835 upstream prematurely closed connection while reading response header from upstream, client: 10.0.4.20, server: checkout.example.com, request: "POST /api/checkout HTTP/1.1", upstream: "http://127.0.0.1:8080/api/checkout"
+2026/06/30 09:05:40 [warn] 2940#2940: *8840 an upstream response is buffered to a temporary file /var/cache/nginx/proxy/0000000123 while reading upstream, client: 10.0.4.21, server: checkout.example.com

@@ -1,0 +1,9 @@
+{
+  "subject": "DB pool timeouts under marketing traffic",
+  "body": "Multiple evidence sources attached: application log, CSV export from monitoring, and JSON error feed.",
+  "attachments": [
+    "../logs/app-db.log",
+    "../logs/errors.csv",
+    "../logs/errors.json"
+  ]
+}

@@ -1,0 +1,4 @@
+[Mon Jun 30 09:02:18.123456 2026] [proxy_http:error] [pid 1842:tid 140234567890] (70007)The timeout specified has expired: [client 10.0.4.18:52114] AH01102: error reading status line from remote server 127.0.0.1:8080
+[Mon Jun 30 09:02:18.234567 2026] [proxy:error] [pid 1842:tid 140234567891] [client 10.0.4.18:52114] AH00898: Error reading from remote server returned by /api/checkout
+[Mon Jun 30 09:04:10.345678 2026] [ssl:error] [pid 1845:tid 140234567892] [client 10.0.4.20:52120] AH02032: Hostname api.internal.example.com provided via SNI, but no hostname provided in HTTP request
+[Mon Jun 30 09:07:15.456789 2026] [core:error] [pid 1848:tid 140234567893] [client 10.0.4.22:52130] End of script output before headers: checkout.cgi

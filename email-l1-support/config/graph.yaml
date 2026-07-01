@@ -1,0 +1,37 @@
+# LangGraph flow definition. app/graph.py reads this and builds the StateGraph.
+# Each node maps to a "module:function" callable that takes (state) -> dict.
+
+entry_point: ingest
+
+nodes:
+  ingest:         "app.nodes.ingest:run"
+  triage:         "app.nodes.triage:run"
+  log_analysis:   "app.nodes.log_analysis:run"
+  retrieve_kb:    "app.nodes.retrieve_kb:run"
+  web_compare:    "app.nodes.web_compare:run"
+  draft_response: "app.nodes.draft_response:run"
+  guardrails:     "app.nodes.guardrails:run"
+  finalize:       "app.nodes.finalize:run"
+  escalate:       "app.nodes.escalate:run"
+
+# Unconditional edges: [from, to]
+edges:
+  - [ingest, triage]
+  - [triage, log_analysis]
+  - [log_analysis, retrieve_kb]
+  - [retrieve_kb, web_compare]
+  - [web_compare, draft_response]
+  - [draft_response, guardrails]
+
+# Conditional edges: the guardrail router decides whether to send or escalate.
+conditional_edges:
+  - source: guardrails
+    router: "app.nodes.guardrails:route"
+    mapping:
+      proceed: finalize
+      escalate: escalate
+
+# Nodes whose completion ends the graph.
+finish:
+  - finalize
+  - escalate
