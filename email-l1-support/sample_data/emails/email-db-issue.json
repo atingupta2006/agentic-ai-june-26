@@ -1,5 +1,0 @@
-{
-  "subject": "Production app keeps returning 500 errors since this morning",
-  "body": "Hi support team,\n\nSince about 9am our checkout service has been throwing 500 errors for many customers. It seems to get worse during busy periods. I've attached the application log from one of the affected servers. Can you tell us what's going on and how to fix it?\n\nThanks,\nPriya (Ops)",
-  "attachments": ["../logs/app-db.log"]
-}

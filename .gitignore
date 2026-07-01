@@ -1,5 +1,9 @@
 **/.ipynb_checkpoints
 **/*.env
+
+# Capstone project (trainer distributes separately — keep local only)
+email-l1-support/
+
 data.zip
 **/*QnA*
 all-env.env

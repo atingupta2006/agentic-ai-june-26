@@ -1,8 +1,0 @@
-{
-  "subject": "Checkout 502/504 from load balancer",
-  "body": "Nginx is returning 502 and 504 for /api/checkout. Apache error log from the front tier and nginx error log attached.",
-  "attachments": [
-    "../logs/apache-error.log",
-    "../logs/nginx-error.log"
-  ]
-}

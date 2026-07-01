@@ -1,4 +1,0 @@
-timestamp,level,service,message
-2026-06-30T09:02:18Z,ERROR,checkout-api,HikariPool-1 - Connection is not available request timed out after 30000ms
-2026-06-30T09:04:10Z,ERROR,postgres,FATAL: sorry too many clients already
-2026-06-30T09:07:15Z,ERROR,checkout-api,Failed to process order 88402 HTTP 500 returned to client
