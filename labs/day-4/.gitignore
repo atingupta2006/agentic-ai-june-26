@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.chroma/
+storage/
+mcp_demo_server.py
+trainer/
+scripts/
+*.sqlite
+email_agent_v3.sqlite
+*.sqlite-shm
+*.sqlite-wal

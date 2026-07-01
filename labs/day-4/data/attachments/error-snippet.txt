@@ -1,0 +1,6 @@
+Incident note from on-call engineer:
+- Spike started 09:00 UTC after marketing email blast
+- HikariPool-1 saturated: active=10 idle=0 waiting=11
+- Postgres also reporting "too many clients already"
+- Temporary mitigation: scaled checkout pods from 3 -> 6 (made it worse)
+- Need guidance on pool sizing vs max_connections

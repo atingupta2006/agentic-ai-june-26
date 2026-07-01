@@ -1,0 +1,35 @@
+# Python 3.11.x
+#   python -m venv .venv
+#   pip install -r requirements.txt
+
+langchain==1.2.0
+langchain-core==1.2.2
+langchain-openai==1.1.5
+langchain-text-splitters==1.1.0
+langgraph==1.0.5
+langgraph-prebuilt==1.0.5
+langgraph-checkpoint==3.0.1
+langgraph-checkpoint-sqlite>=2.0.0
+
+openai==2.13.0
+tiktoken==0.12.0
+numpy>=1.26.0
+
+chromadb>=0.5.0
+langchain-chroma>=0.2.0
+
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+google-search-results>=2.4.2
+
+mcp>=1.2.0
+pywin32>=306; sys_platform == "win32"  # required by mcp stdio client on Windows
+
+langchain-google-genai>=2.0.0
+aiosqlite>=0.20.0
+
+python-dotenv>=1.0.1
+requests>=2.32.0
+
+ipykernel==7.1.0
+jupyterlab==4.5.1

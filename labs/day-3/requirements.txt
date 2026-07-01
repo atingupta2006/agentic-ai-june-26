@@ -1,0 +1,79 @@
+# ================================
+# Python Runtime
+# ================================
+# Tested on Python 3.11.x (any patch version, e.g. 3.11.0 or 3.11.9).
+# Use 3.11 for this course stack. Python 3.12 is not required for Day 3 labs.
+
+# ================================
+# Core LangChain Ecosystem
+# ================================
+langchain==1.2.0
+langchain-classic==1.0.0
+langchain-core==1.2.2
+langchain-community==0.4.1
+langchain-openai==1.1.5
+
+# Required for text splitting and prompt utilities
+langchain-text-splitters==1.1.0
+
+# ================================
+# LangGraph (Optional but Installed)
+# ================================
+# Even if not used directly, ecosystem is stable with this present
+langgraph==1.0.5
+langgraph-prebuilt==1.0.5
+langgraph-checkpoint==3.0.1
+
+# ================================
+# LLM & Tokenization
+# ================================
+openai==2.13.0
+tiktoken==0.12.0
+
+# ================================
+# Async + HTTP (LangChain internals)
+# ================================
+httpx==0.28.1
+aiohttp==3.13.2
+anyio==4.12.0
+
+# ================================
+# Data Validation (Pydantic v2 – REQUIRED)
+# ================================
+pydantic==2.12.5
+pydantic-settings==2.12.0
+typing_extensions==4.15.0
+
+# ================================
+# Search / Research Tooling
+# ================================
+ddgs==9.10.0
+requests==2.32.5
+beautifulsoup4==4.14.3
+
+# ================================
+# Jupyter / Notebook Environment
+# ================================
+ipykernel==7.1.0
+ipython==9.8.0
+jupyterlab==4.5.1
+
+# ================================
+# Lab-specific (notebooks 1–2)
+# ================================
+numexpr==2.14.1
+google-search-results==2.4.2
+
+# ================================
+# LangGraph checkpoint + notebooks 4–5
+# ================================
+langgraph-checkpoint-sqlite>=2.0.0
+langchain-google-genai>=2.0.0
+aiosqlite>=0.20.0
+numpy>=1.26.0
+
+# ================================
+# Utilities
+# ================================
+python-dotenv==1.2.1
+tqdm==4.67.1

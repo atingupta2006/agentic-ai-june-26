@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+*.sqlite
+email_agent_v3.sqlite
+trainer/
+scripts/

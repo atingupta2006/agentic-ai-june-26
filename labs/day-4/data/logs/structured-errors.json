@@ -1,0 +1,5 @@
+[
+  {"ts": "2026-06-30T09:02:18Z", "level": "ERROR", "logger": "db.HikariPool", "msg": "Connection is not available, request timed out after 30000ms"},
+  {"ts": "2026-06-30T09:04:10Z", "level": "ERROR", "logger": "org.postgresql", "msg": "FATAL: sorry, too many clients already"},
+  {"ts": "2026-06-30T09:07:15Z", "level": "ERROR", "logger": "db.HikariPool", "msg": "Connection is not available, request timed out after 30000ms"}
+]
